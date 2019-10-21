@@ -69,7 +69,7 @@ public class getInfoCustomer {
         Bill b1 = new Bill(6, "abc", 3200, "24/2/2019");
         Bill b2 = new Bill(2, "xyz", 1100000, "27/2/2019");
         Bill b3 = new Bill(23, "he", 1100000, "24/2/2019");
-        listBill.add(b1);
+        listBill.add(b1 );
         listBill.add(b2);
         listBill.add(b3);
         Collections.sort(listBill, new Comparator<Bill>() {
