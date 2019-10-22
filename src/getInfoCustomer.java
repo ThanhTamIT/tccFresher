@@ -101,7 +101,7 @@ public class getInfoCustomer {
         for (int i = 0; i < listBill.size(); i++) {
             List<Bill> lb1 = new ArrayList<>();
             lb1.add(listBill.get(i));
-            while (i < listBill.size() - 1 && listBill.get(i).getDate().equals(listBill.get(i + 1).getDate())) {
+            if (i < listBill.size() - 1 && listBill.get(i).getDate().equals(listBill.get(i + 1).getDate())) {
                 lb1.add(listBill.get(i + 1));
                 i++;
             }

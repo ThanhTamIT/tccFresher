@@ -1,12 +1,17 @@
 package bai2;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public class FindString {
+    private static final String SEPARATOR = ",";
     public static void main(String[] args) {
         cau1();
-        cau3();
-        cau4();
+        cau31();
+       // cau4();
+        cau41();
         cau5();
     }
 
@@ -21,8 +26,21 @@ public class FindString {
             }
         }
         System.out.println("So lan xuat hien cua ky tu " + ch + ": " + dem);
-        System.out.println("Ky tu dau tien: " + str.charAt(0));
-        System.out.println("Ky tu cuoi: " + str.charAt(str.length() - 1));
+        int indexFirst=0;
+        for(int i=0; i<str.length(); i++){
+            if(str.charAt(i)== ch){
+                indexFirst=i;
+                break;
+            }
+        }
+        System.out.println("Vị trí đầu tiên: " + indexFirst);
+        int indexLast=0;
+        for(int i=0; i<str.length(); i++){
+            if(str.charAt(i)== ch){
+                indexLast=i;
+            }
+        }
+        System.out.println("Vị trí cuối cùng " + indexLast);
         System.out.println("Ky tu xuat hien vi tri thu " + n + ": " + str.charAt(n));
         //abcabdef
         String str1 = "abd";
@@ -84,22 +102,40 @@ public class FindString {
 
     }
 
-    public static void cau3(){
-        String text = "I am Thanh Tam";
-        String r = text.replace(" ",",");
-        System.out.println(r);
-    }
-    public static void cau4(){
-        String text = "I, am, Thanh, Tam";
-        String r = text.replace(", "," ");
-        System.out.println(r);
+    public static void cau31(){
+        ArrayList<String> list = new ArrayList<String>();
+        list.add("raw");
+        list.add("from");
+        list.add("to");
 
-        String string = "004-034556";
-        String[] parts = string.split("3");
-        String part1 = parts[0];
-        String part2 = parts[1];
-        System.out.println(part1);
-        System.out.println(part2);
+        StringBuilder builder = new StringBuilder();
+        for(String text : list){
+            builder.append(text);
+            builder.append(SEPARATOR);
+        }
+        String castToStr = builder.toString();
+        castToStr = castToStr.substring(0, castToStr.length() - SEPARATOR.length());
+        System.out.println(castToStr);
+    }
+
+//    public static void cau4(){
+//        String text = "I, am, Thanh, Tam";
+//        String r = text.replace(", "," ");
+//        System.out.println(r);
+//
+//        String string = "004-034556";
+//        String[] parts = string.split("3");
+//        String part1 = parts[0];
+//        String part2 = parts[1];
+//        System.out.println(part1);
+//        System.out.println(part2);
+//    }
+    public static void cau41(){
+        String s = "My name is Tam";
+
+        List<String> myList = new ArrayList<String>(Arrays.asList(s.replace(","," ")));
+
+        System.out.println(myList);
     }
     public static void cau5(){
         String  raw = "I am fresher", from = "fresher" , to = "senior";
