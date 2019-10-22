@@ -26,9 +26,11 @@ public class StringToDate {
         // hiển thị thời gian hiện tại
         System.out.println("Thời gian hiện tại là " + date);
         int dayFirst = cal.getActualMinimum(Calendar.DATE);
-        System.out.println("Ngày đầu của tháng hiện tại :" + dayFirst);
+        String ngayDauTH= dayFirst+"";
+        System.out.println("Ngày đầu của tháng hiện tại :" + ngayDauTH);
         int dayEnd = cal.getMaximum(Calendar.DATE);
-        System.out.println("Ngày cuối của tháng hiện tại : " + dayEnd);
+        String ngayCuoiTH= dayFirst+"";
+        System.out.println("Ngày cuối của tháng hiện tại : " + ngayCuoiTH);
         cal.add(Calendar.DAY_OF_MONTH,100);
         System.out.println("Thời gian hiện tại sau 100 ngày là:"+dateFormat.format(cal.getTime()));
     }
