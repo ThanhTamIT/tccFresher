@@ -4,8 +4,8 @@ public class Main {
         getInfo.inPut();
         getInfo.sortMoney();
         System.out.println(getInfo.getListGreat1000());
-        System.out.println(getInfo.getDayHasBill());
         getInfo.cau6();
+        getInfo.cau4();
 
     }
 }

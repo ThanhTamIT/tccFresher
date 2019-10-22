@@ -50,19 +50,35 @@ public class getInfoCustomer {
         return listBill;
     }
 
-    public List<String> getDayHasBill() {
-        List<String> listDate = new ArrayList<>();
-        System.out.println("Danh sách những ngày có hóa đơn:");
-        listDate.add(billList.get(0).getDate());
-        for (int i = 1; i < billList.size(); i++) {
-            String a1 = billList.get(i).getDate();
-            String a2 = billList.get(i - 1).getDate();
+    public void cau4() {
+        List<Bill> listBill = new ArrayList<>();
+        Bill b1 = new Bill(6, "abc", 3200, "24/2/2019");
+        Bill b2 = new Bill(2, "xyz", 1100000, "27/2/2019");
+        Bill b3 = new Bill(23, "he", 1100000, "24/2/2019");
+        listBill.add(b1 );
+        listBill.add(b2);
+        listBill.add(b3);
+        Collections.sort(listBill, new Comparator<Bill>() {
+            @Override
+            public int compare(Bill b1, Bill b2) {
+                return b1.getDate().compareTo(b2.getDate());
+            }
+        });
+        for (Bill element : listBill) {
+            System.out.println(element.toString());
+        }
+        System.out.println(listBill.get(0).getDate());
+        for (int i = 1; i < listBill.size(); i++) {
+            String a1 = listBill.get(i).getDate();
+            String a2 = listBill.get(i - 1).getDate();
             if (a1.equals(a2) == false) {
-                listDate.add(billList.get(i).getDate());
+                System.out.println(listBill.get(i).getDate());
             }
         }
-        return listDate;
+
     }
+
+
 
     public void cau6() {
         List<Bill> listBill = new ArrayList<>();
