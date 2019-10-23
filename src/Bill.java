@@ -1,8 +1,12 @@
-public class Bill {
-   private int id;
-   private String name;
-   private long money;
-   private String date;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+public class Bill implements Serializable {
+    private int id;
+    private String name;
+    private long money;
+    private String date;
 
     @Override
     public String toString() {
@@ -55,4 +59,22 @@ public class Bill {
     public void setDate(String date) {
         this.date = date;
     }
+
+
+        @Override
+        public boolean equals(Object bill){
+            if(bill instanceof Bill){
+                Bill another = (Bill) bill;
+                if(this.id==another.id && this.name.equals(another.name)){
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        public int hashCode(){
+            return 31+name.hashCode();
+        }
+
 }

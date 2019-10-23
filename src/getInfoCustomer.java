@@ -52,7 +52,7 @@ public class getInfoCustomer {
 
     public void cau4() {
         List<Bill> listBill = new ArrayList<>();
-        Bill b1 = new Bill(6, "abc", 3200, "24/2/2019");
+        Bill b1 = new Bill(23, "he", 3200, "24/2/2019");
         Bill b2 = new Bill(2, "xyz", 1100000, "27/2/2019");
         Bill b3 = new Bill(23, "he", 1100000, "24/2/2019");
         listBill.add(b1 );
@@ -66,6 +66,44 @@ public class getInfoCustomer {
 
     }
 
+    public void cau8(){
+        List<Bill> listBill = new ArrayList<>();
+        Bill b1 = new Bill(6, "abc", 3200, "24/2/2019");
+        Bill b2 = new Bill(2, "xyz", 1100000, "27/2/2019");
+        Bill b3 = new Bill(23, "he", 1100000, "24/2/2019");
+        Bill b4 = new Bill(6, "abc", 3200, "25/2/2019");
+        listBill.add(b1);
+        listBill.add(b4);
+        listBill.add(b2);
+        listBill.add(b3);
+        Set<Bill> bills = new HashSet<Bill>();
+            bills.addAll(listBill);
+        System.out.println(bills);
+
+//        Map<String, Bill> billMap = new HashMap<>();
+//
+//        putDataToMap(b1, billMap);
+//        putDataToMap(b2, billMap);
+//        putDataToMap(b3, billMap);
+//        putDataToMap(b4, billMap);
+//
+//        billMap.forEach((keyInt, valueInt) -> System.out.println(
+//                "Key = " + keyInt + ", value = " + valueInt.getId() + " "
+//                        + valueInt.getName() + " "
+//                        + valueInt.getMoney() + " "
+//                        + valueInt.getDate()));
+//
+//        Set<Map.Entry<String, Bill>> result = billMap.entrySet();
+//        System.out.println("result " + result);
+//
+
+//        System.out.println(b1.equals(b4));
+//        setBill.forEach(it -> System.out.println(it.getId() + it.getName()));
+    }
+
+    private void putDataToMap(Bill bill, Map<String, Bill> map){
+        map.put(bill.getId() + bill.getName(), bill);
+    }
 
 
     public void cau6() {

@@ -56,7 +56,7 @@ public class FindString {
         String str = "abcffdeff";
         HashMap<Character, Integer> hashMap1 = new HashMap<Character, Integer>();
         for (int i = 0; i < str.length(); i++) {
-            if (hashMap1.containsKey(str.charAt(i)) == false) {
+            if (!hashMap1.containsKey(str.charAt(i))) {
                 hashMap1.put(str.charAt(i), 1);
             } else {
                 hashMap1.put(str.charAt(i), hashMap1.get(str.charAt(i)).intValue() + 1);
@@ -78,7 +78,7 @@ public class FindString {
         for(int i = 2; i < str.length(); i++){
             for (int j = 0; j <= str.length() - i; j++){
                 str1 = str.substring(j,j+i);
-            if (hashMap.containsKey(str1) == false) {
+            if (!hashMap.containsKey(str1)) {
                 hashMap.put(str1, 1);
             } else {
                 hashMap.put(str1, hashMap.get(str1).intValue() + 1);
