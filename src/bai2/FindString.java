@@ -8,11 +8,12 @@ import java.util.List;
 public class FindString {
     private static final String SEPARATOR = ",";
     public static void main(String[] args) {
-        cau1();
-        cau31();
+       // cau1();
+       // cau31();
+        cau2();
        // cau4();
-        cau41();
-        cau5();
+       // cau41();
+       // cau5();
     }
 
     public static void cau1() {
@@ -26,21 +27,8 @@ public class FindString {
             }
         }
         System.out.println("So lan xuat hien cua ky tu " + ch + ": " + dem);
-        int indexFirst=0;
-        for(int i=0; i<str.length(); i++){
-            if(str.charAt(i)== ch){
-                indexFirst=i;
-                break;
-            }
-        }
-        System.out.println("Vị trí đầu tiên: " + indexFirst);
-        int indexLast=0;
-        for(int i=0; i<str.length(); i++){
-            if(str.charAt(i)== ch){
-                indexLast=i;
-            }
-        }
-        System.out.println("Vị trí cuối cùng " + indexLast);
+        System.out.println("Vị trí đầu tiên: " + str.indexOf('a'));
+        System.out.println("Vị trí cuối cùng " + str.lastIndexOf('a'));
         System.out.println("Ky tu xuat hien vi tri thu " + n + ": " + str.charAt(n));
         //abcabdef
         String str1 = "abd";
@@ -66,39 +54,40 @@ public class FindString {
     }
     public static void cau2() {
         String str = "abcffdeff";
-        int[] dem = new int[26];
+        HashMap<Character, Integer> hashMap1 = new HashMap<Character, Integer>();
         for (int i = 0; i < str.length(); i++) {
-            dem[str.charAt(i) - 'a']++;
-        }
-        int max = 0;
-        int asckt = 0;
-        for (int j = 0; j < dem.length; j++) {
-            if (dem[j] > max) {
-                max = dem[j];
-                asckt = j;
+            if (hashMap1.containsKey(str.charAt(i)) == false) {
+                hashMap1.put(str.charAt(i), 1);
+            } else {
+                hashMap1.put(str.charAt(i), hashMap1.get(str.charAt(i)).intValue() + 1);
             }
         }
-        char kt = (char) (asckt + 97);
+        int max =0;
+        char kt=' ';
+        for (Character ch : hashMap1.keySet()) {
+            if (hashMap1.get(ch) > max){
+                max = hashMap1.get(ch);
+                kt = ch;
+            }
+        }
+
         System.out.println(kt + " max= " + max);
 
         HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
         String str1 = "";
-
-        for (int i = 2; i < str.length(); i++) {
-            for (int m = 0; m <= str.length() - i; m++) {
-                for (int j = m; j < i + m; j++) {
-                    str1 += str.charAt(j);
-                }
-                if (hashMap.get(str1) == null) {
-                    hashMap.put(str1, 1);
-                } else {
-                    hashMap.put(str1, hashMap.get(str1).intValue() + 1);
-                }
-
-                str1 = "";
+        for(int i = 2; i < str.length(); i++){
+            for (int j = 0; j <= str.length() - i; j++){
+                str1 = str.substring(j,j+i);
+            if (hashMap.containsKey(str1) == false) {
+                hashMap.put(str1, 1);
+            } else {
+                hashMap.put(str1, hashMap.get(str1).intValue() + 1);
+            }
             }
         }
+
         System.out.println(hashMap);
+
 
     }
 
@@ -107,14 +96,7 @@ public class FindString {
         list.add("raw");
         list.add("from");
         list.add("to");
-
-        StringBuilder builder = new StringBuilder();
-        for(String text : list){
-            builder.append(text);
-            builder.append(SEPARATOR);
-        }
-        String castToStr = builder.toString();
-        castToStr = castToStr.substring(0, castToStr.length() - SEPARATOR.length());
+        String castToStr = String.join(",", list);
         System.out.println(castToStr);
     }
 

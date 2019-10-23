@@ -5,7 +5,7 @@ public class Main {
        // getInfo.sortMoney();
        // System.out.println(getInfo.getListGreat1000());
         getInfo.cau6();
-       // getInfo.cau4();
+        //getInfo.cau4();
 
     }
 }

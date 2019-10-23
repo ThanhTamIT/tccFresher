@@ -58,23 +58,11 @@ public class getInfoCustomer {
         listBill.add(b1 );
         listBill.add(b2);
         listBill.add(b3);
-        Collections.sort(listBill, new Comparator<Bill>() {
-            @Override
-            public int compare(Bill b1, Bill b2) {
-                return b1.getDate().compareTo(b2.getDate());
-            }
-        });
-        for (Bill element : listBill) {
-            System.out.println(element.toString());
+        Set<String> bills = new HashSet<>();
+        for (Bill bill : listBill) {
+            bills.add(bill.getDate());
         }
-        System.out.println(listBill.get(0).getDate());
-        for (int i = 1; i < listBill.size(); i++) {
-            String a1 = listBill.get(i).getDate();
-            String a2 = listBill.get(i - 1).getDate();
-            if (a1.equals(a2) == false) {
-                System.out.println(listBill.get(i).getDate());
-            }
-        }
+        System.out.println(bills);
 
     }
 
@@ -88,30 +76,17 @@ public class getInfoCustomer {
         listBill.add(b1 );
         listBill.add(b2);
         listBill.add(b3);
-        Collections.sort(listBill, new Comparator<Bill>() {
-            @Override
-            public int compare(Bill b1, Bill b2) {
-                return b1.getDate().compareTo(b2.getDate());
+        HashMap<String, List<Bill>> hashMap = new HashMap<String, List<Bill>>();
+        for(int i = 0; i< listBill.size(); i++){
+            List<Bill> bills = new ArrayList<>();
+            if(hashMap.containsKey(listBill.get(i).getDate())==true){
+                bills = hashMap.get(listBill.get(i).getDate());
             }
-        });
-        for (Bill bill : listBill) {
-            System.out.println(bill.toString());
+            bills.add(listBill.get(i));
+            hashMap.put(listBill.get(i).getDate(),bills);
         }
-        HashMap<String, List<Bill>> hashMap = new HashMap<>();
-        for (int i = 0; i < listBill.size(); i++) {
-            List<Bill> lb1 = new ArrayList<>();
-            lb1.add(listBill.get(i));
-            if (i < listBill.size() - 1 && listBill.get(i).getDate().equals(listBill.get(i + 1).getDate())) {
-                lb1.add(listBill.get(i + 1));
-                i++;
-            }
-
-            hashMap.put(listBill.get(i).getDate(), lb1);
-
-        }
-
-        for (String i : hashMap.keySet()) {
-            System.out.println("key: " + i + " value: " + hashMap.get(i));
+        for (String dayb : hashMap.keySet()) {
+            System.out.println("key: " + dayb + " value: " + hashMap.get(dayb));
         }
     }
 

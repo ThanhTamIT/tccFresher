@@ -4,6 +4,9 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -17,6 +20,7 @@ public class StringToDate {
         compareDates();
         convertDateTimestamp();
         convertSimpleDate();
+        betweenTwoTime();
     }
     public static void getDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
@@ -26,10 +30,10 @@ public class StringToDate {
         // hiển thị thời gian hiện tại
         System.out.println("Thời gian hiện tại là " + date);
         int dayFirst = cal.getActualMinimum(Calendar.DATE);
-        String ngayDauTH= dayFirst+"";
-        System.out.println("Ngày đầu của tháng hiện tại :" + ngayDauTH);
+        String ngayDauTH=cal.get(Calendar.YEAR)+ "/"+(cal.get(Calendar.MONTH)+1)+"/"+dayFirst;
+        System.out.println("Ngày đầu của tháng hiện tại :" + ngayDauTH );
         int dayEnd = cal.getMaximum(Calendar.DATE);
-        String ngayCuoiTH= dayFirst+"";
+        String ngayCuoiTH=cal.get(Calendar.YEAR)+ "/"+(cal.get(Calendar.MONTH)+1)+"/"+dayEnd;
         System.out.println("Ngày cuối của tháng hiện tại : " + ngayCuoiTH);
         cal.add(Calendar.DAY_OF_MONTH,100);
         System.out.println("Thời gian hiện tại sau 100 ngày là:"+dateFormat.format(cal.getTime()));
@@ -70,16 +74,6 @@ public class StringToDate {
         System.out.println(last);
     }
     private static void convertSimpleDate() throws ParseException {
-//        String string = "2010/11/1 05:12:59";
-//        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-//        Date date = format.parse(string);
-//        System.out.println("Sau khi định dạng:"+date);
-
-//        String date="2010/11/01 05:12:59";
-//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        Date currentdate;
-//        currentdate=sdf.parse(date);
-//        System.out.println(currentdate);
 
         String date="2010/11/1 05:12:59";
 
@@ -92,5 +86,18 @@ public class StringToDate {
 
         } catch (ParseException e) {
         }
+    }
+
+    private static void betweenTwoTime(){
+        LocalDate now = LocalDate.now();
+        LocalDate sixDaysBehind = now.minusDays(6);
+//        Duration duration = Duration.between(now, sixDaysBehind);
+//        long diff = Math.abs(duration.toMinutes());
+
+        Period distance = Period.between(now, sixDaysBehind);
+
+        System.out.println("Sự chênh lệch giữa 2 thời gian là " +
+                Math.abs(distance.getYears()) + " năm " + Math.abs(distance.getMonths()) + " tháng và " +
+                Math.abs(distance.getDays())+ " ngày.");
     }
 }
